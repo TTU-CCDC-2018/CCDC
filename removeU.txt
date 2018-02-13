@@ -1,0 +1,3 @@
+import-module activedirectory
+$ac=Read-Host "Account: "
+Remove-ADuser $ac

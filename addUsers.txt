@@ -1,0 +1,11 @@
+Import-Module ActiveDirectory
+$csv = Import-CSV -Path "C:\users.csv"
+foreach($User in $csv){
+	$DisplayName = $User.Firstname + " " + $User.Lastname
+	$UFirstName = $user.Firstname
+	$ULastname = $user.Lastname
+	$SAM = $User.SAM
+	$UPN = $User.SAM+"@"+$User.Maildomain
+	$Password = "Test123!@#"
+	New-ADUser -Name "$DisplayName" -DisplayName "$DisplayName" -SamAccountName $SAM -UserPrincipalName $UPN -GivenName "$UFirstName" -Surname "$ULastName" -AccountPassword (ConvertTo-SecureString $Password -AsPlainText -Force) -Enabled $true -ChangePasswordAtLogon $true -PasswordNeverExpires $false
+}

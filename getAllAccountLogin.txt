@@ -1,0 +1,2 @@
+import-module activedirectory
+Get-ADUser -Filter * | select SamAccountName
